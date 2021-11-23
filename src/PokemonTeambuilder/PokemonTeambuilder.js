@@ -2,14 +2,17 @@
 import './PokemonTeambuilder.css';
 import React, {Component} from 'react';
 import axios from 'axios';
+import Pokemon from './Pokemon';
 
 export default class PokemonTeambuilder extends Component {
     constructor(props) {
         super(props);
         this.state = {
             value: '',
+            object:{},
             array: []
         }
+        this.handleAdd = this.handleAdd.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -20,8 +23,24 @@ export default class PokemonTeambuilder extends Component {
 
     resetPage() {
         const value = '';
+        const object = {};
         const array = [];
-        this.setState({value,array})
+        this.setState({value,object,array})
+    }
+
+    handleAdd(e) {
+        e.preventDefault();
+        if (this.state.value ==="") {
+            alert("search for pokemon first")
+            console.log("search first")
+        } else {
+            const temp = this.state.object;
+            let arr = this.state.array.slice();
+            arr.push(temp);
+            this.setState({array: arr}, () => {
+                console.log(this.state.array)
+            })
+        }
     }
 
     handleChange(e) {
@@ -38,9 +57,8 @@ export default class PokemonTeambuilder extends Component {
             method: 'GET',
             responseType: 'json',
         }).then(response => {
-            console.log(response);
-            this.state.array.push(response);
-            console.log(this.state.array);
+            console.log(response); 
+            this.setState({object:response.data})
             if (response.ok) {
                 // 
             } else {
@@ -50,7 +68,7 @@ export default class PokemonTeambuilder extends Component {
         })
         // console.log(this.state.array)
     }
-    
+
     render() {
         return(
             <div>
@@ -62,6 +80,10 @@ export default class PokemonTeambuilder extends Component {
                         <input type="text" value={this.state.value} onChange={this.handleChange} />
                         <input type="submit" value="Submit" />
                     </form>
+                    <button onClick={this.handleAdd}>Add</button>
+                    <Pokemon
+                        pokemon={this.state.object}
+                    ></Pokemon>
                 </main>
             </div>
         )
