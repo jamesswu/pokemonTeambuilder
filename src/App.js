@@ -1,5 +1,4 @@
 
-import './App.css';
 import PokemonTeambuilder from './PokemonTeambuilder/PokemonTeambuilder';
 
 function App() {
