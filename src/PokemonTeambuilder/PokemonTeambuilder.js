@@ -49,7 +49,6 @@ export default class PokemonTeambuilder extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        e.
         axios({
             url: `https://pokeapi.co/api/v2/pokemon/${this.state.value}`,
             method: 'GET',
