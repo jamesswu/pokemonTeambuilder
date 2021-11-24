@@ -101,9 +101,7 @@ export default class PokemonTeambuilder extends Component {
                             }
                         </div>
                         <div className="search">
-                            <Pokemon
-                                pokemon={this.state.object}
-                            ></Pokemon>
+                            <Pokemon pokemon={this.state.object}></Pokemon>
                         </div>
                     </div>
 

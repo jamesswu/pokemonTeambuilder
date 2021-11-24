@@ -1,5 +1,7 @@
 
 import { Component } from "react";
+import StatBar from "./StatBar";
+import Stats from "./Stats";
 
 export default class Pokemon extends Component {
     constructor(props){
@@ -19,20 +21,22 @@ export default class Pokemon extends Component {
                         <h2>{pokemon.name}</h2>
                         <div className="stats">
                             <div className="statInfo">
-                                <p>{pokemon.stats[0].stat.name}: {pokemon.stats[0].base_stat}</p>
-                                <p>{pokemon.stats[1].stat.name}: {pokemon.stats[1].base_stat}</p>
-                                <p>{pokemon.stats[2].stat.name}: {pokemon.stats[2].base_stat}</p>
-                                <p>{pokemon.stats[3].stat.name}: {pokemon.stats[3].base_stat}</p>
-                                <p>{pokemon.stats[4].stat.name}: {pokemon.stats[4].base_stat}</p>
-                                <p>{pokemon.stats[5].stat.name}: {pokemon.stats[5].base_stat}</p>
+                                {
+                                    pokemon.stats.map((item,index) => {
+                                        return (
+                                            <Stats key={index} stat={item.stat.name} value={item.base_stat}></Stats>
+                                        )
+                                    })
+                                }
                             </div>
                             <div className="statBars">
-                                <div className="statBar" style={{width:`${pokemon.stats[0].base_stat}px`}}></div>
-                                <div className="statBar" style={{width:`${pokemon.stats[1].base_stat}px`}}></div>
-                                <div className="statBar" style={{width:`${pokemon.stats[2].base_stat}px`}}></div>
-                                <div className="statBar" style={{width:`${pokemon.stats[3].base_stat}px`}}></div>
-                                <div className="statBar" style={{width:`${pokemon.stats[4].base_stat}px`}}></div>
-                                <div className="statBar" style={{width:`${pokemon.stats[5].base_stat}px`}}></div>
+                                {
+                                    pokemon.stats.map((item,index) => {
+                                        return (
+                                            <StatBar key={index} stat={item.base_stat}></StatBar>
+                                        )
+                                    })
+                                }
                             </div>
                         </div>
                     </div>
