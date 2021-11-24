@@ -2,6 +2,7 @@
 import { Component } from "react";
 import StatBar from "./StatBar";
 import Stats from "./Stats";
+import Types from "./Types";
 
 export default class Pokemon extends Component {
     constructor(props){
@@ -10,7 +11,9 @@ export default class Pokemon extends Component {
     }
 
     render() {
+        // set up prop
         const { pokemon } = this.props;
+        // check if this component has rendered before api data successfully sent over
         if (pokemon) {
             return(
                 <div className="searchedPokemon">
@@ -18,10 +21,24 @@ export default class Pokemon extends Component {
                         <img src={pokemon.sprites.other['official-artwork'].front_default} alt="" />
                     </div>
                     <div className="info">
-                        <h2>{pokemon.name}</h2>
+                        <div>
+                            <h2>{pokemon.name}</h2>
+                            <div className="types">
+                                {
+                                    pokemon.types.map((item,idx) => {
+                                        return(
+                                            <Types key={idx} type={item.type.name}></Types>
+                                        )
+                                    }) 
+                                }
+                            </div>
+                        </div>
                         <div className="stats">
                             <div className="statInfo">
                                 {
+                                    /**
+                                     * loop through array and grab stat and name of each element
+                                     */
                                     pokemon.stats.map((item,index) => {
                                         return (
                                             <Stats key={index} stat={item.stat.name} value={item.base_stat}></Stats>
@@ -31,6 +48,9 @@ export default class Pokemon extends Component {
                             </div>
                             <div className="statBars">
                                 {
+                                    /**
+                                     * loop through the array and grab the stat for the stat bar
+                                     */
                                     pokemon.stats.map((item,index) => {
                                         return (
                                             <StatBar key={index} stat={item.base_stat}></StatBar>
