@@ -90,3 +90,9 @@ img {
     height: 19px;
     margin: 5px 5px;
 }
+
+@media (max-width: 770px) {
+    .searchedPokemon {
+        flex-direction: column;
+    }
+}

@@ -1,5 +1,4 @@
 
-// import Stats from "./Stats";
 import { Component } from "react";
 
 export default class Pokemon extends Component {
@@ -44,15 +43,3 @@ export default class Pokemon extends Component {
         }
     }
 }
-
-// WORK IN PROGRESS
-{/* {
-    pokemon.stats.map((item,idx) => {
-        return (
-            <Stats
-                key={idx}
-                stat={item[idx]}
-            ></Stats>
-        )
-    })
-} */}
