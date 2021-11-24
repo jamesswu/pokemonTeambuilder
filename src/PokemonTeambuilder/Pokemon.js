@@ -14,26 +14,29 @@ export default class Pokemon extends Component {
                 <div className="searchedPokemon">
                     <div className="pokemon">
                         <img src={pokemon.sprites.other['official-artwork'].front_default} alt="" />
+                    </div>
+                    <div className="info">
                         <h2>{pokemon.name}</h2>
-                    </div>
-                    <div className="stats">
-                        <div className="statInfo">
-                            <p>{pokemon.stats[0].stat.name}: {pokemon.stats[0].base_stat}</p>
-                            <p>{pokemon.stats[1].stat.name}: {pokemon.stats[1].base_stat}</p>
-                            <p>{pokemon.stats[2].stat.name}: {pokemon.stats[2].base_stat}</p>
-                            <p>{pokemon.stats[3].stat.name}: {pokemon.stats[3].base_stat}</p>
-                            <p>{pokemon.stats[4].stat.name}: {pokemon.stats[4].base_stat}</p>
-                            <p>{pokemon.stats[5].stat.name}: {pokemon.stats[5].base_stat}</p>
+                        <div className="stats">
+                            <div className="statInfo">
+                                <p>{pokemon.stats[0].stat.name}: {pokemon.stats[0].base_stat}</p>
+                                <p>{pokemon.stats[1].stat.name}: {pokemon.stats[1].base_stat}</p>
+                                <p>{pokemon.stats[2].stat.name}: {pokemon.stats[2].base_stat}</p>
+                                <p>{pokemon.stats[3].stat.name}: {pokemon.stats[3].base_stat}</p>
+                                <p>{pokemon.stats[4].stat.name}: {pokemon.stats[4].base_stat}</p>
+                                <p>{pokemon.stats[5].stat.name}: {pokemon.stats[5].base_stat}</p>
+                            </div>
+                            <div className="statBars">
+                                <div className="statBar" style={{width:`${pokemon.stats[0].base_stat}px`}}></div>
+                                <div className="statBar" style={{width:`${pokemon.stats[1].base_stat}px`}}></div>
+                                <div className="statBar" style={{width:`${pokemon.stats[2].base_stat}px`}}></div>
+                                <div className="statBar" style={{width:`${pokemon.stats[3].base_stat}px`}}></div>
+                                <div className="statBar" style={{width:`${pokemon.stats[4].base_stat}px`}}></div>
+                                <div className="statBar" style={{width:`${pokemon.stats[5].base_stat}px`}}></div>
+                            </div>
                         </div>
-                        <div className="statBars">
-                            <div className="statBar" style={{width:`${pokemon.stats[0].base_stat}px`}}></div>
-                            <div className="statBar" style={{width:`${pokemon.stats[1].base_stat}px`}}></div>
-                            <div className="statBar" style={{width:`${pokemon.stats[2].base_stat}px`}}></div>
-                            <div className="statBar" style={{width:`${pokemon.stats[3].base_stat}px`}}></div>
-                            <div className="statBar" style={{width:`${pokemon.stats[4].base_stat}px`}}></div>
-                            <div className="statBar" style={{width:`${pokemon.stats[5].base_stat}px`}}></div>
-                        </div>
                     </div>
+                    
                 </div> 
             )
         } else {
