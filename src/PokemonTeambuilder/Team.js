@@ -8,7 +8,7 @@ export default class Team extends Component {
     }
     
     render() {
-        const { name,sprite } = this.props
+        const { name,sprite } = this.props;
         if (name && sprite) {
             return (
                 <div className="teamPokemon">
