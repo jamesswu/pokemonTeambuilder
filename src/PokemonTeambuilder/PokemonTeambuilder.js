@@ -3,6 +3,7 @@ import './PokemonTeambuilder.css';
 import React, {Component} from 'react';
 import axios from 'axios';
 import Pokemon from './Pokemon';
+import Team from './Team';
 
 export default class PokemonTeambuilder extends Component {
     constructor(props) {
@@ -26,18 +27,21 @@ export default class PokemonTeambuilder extends Component {
         const value = '';
         const object = false;
         const array = [];
-        this.setState({value,object,array})
+        const error = null;
+        this.setState({value,object,array,error});
     }
-
+    
     handleAdd(e) {
         e.preventDefault();
         if (this.state.value ==="") {
-            alert("search for pokemon first")
+            alert("search for pokemon first");
+        } else if (this.state.array.length === 6){
+            alert("team is full");
         } else {
             const temp = this.state.object;
             let arr = this.state.array.slice();
             arr.push(temp);
-            this.setState({array: arr}, () => {})
+            this.setState({array: arr}, () => {});
         }
     }
 
@@ -49,7 +53,6 @@ export default class PokemonTeambuilder extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        e.
         axios({
             url: `https://pokeapi.co/api/v2/pokemon/${this.state.value}`,
             method: 'GET',
@@ -82,11 +85,26 @@ export default class PokemonTeambuilder extends Component {
                         </form>
                         <button onClick={this.handleAdd}>Add</button>
                     </div>
-                    <div className="search">
-                        <Pokemon
-                            pokemon={this.state.object}
-                        ></Pokemon>
+                    <div className="contentContainer">
+                        <div className="team">
+                            <h2>Team</h2>
+                            {
+                                this.state.array.map((item,index) => {
+                                    return (
+                                        <Team
+                                            key={index}
+                                            name={item.name}
+                                            sprite={item.sprites.versions['generation-viii'].icons.front_default}
+                                        ></Team>
+                                    )
+                                })
+                            }
+                        </div>
+                        <div className="search">
+                            <Pokemon pokemon={this.state.object}></Pokemon>
+                        </div>
                     </div>
+
                 </main>
             </div>
         )
