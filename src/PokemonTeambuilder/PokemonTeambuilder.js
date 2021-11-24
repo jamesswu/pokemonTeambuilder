@@ -9,8 +9,9 @@ export default class PokemonTeambuilder extends Component {
         super(props);
         this.state = {
             value: '',
-            object:{},
-            array: []
+            object:false,
+            array: [],
+            error:null
         }
         this.handleAdd = this.handleAdd.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -23,7 +24,7 @@ export default class PokemonTeambuilder extends Component {
 
     resetPage() {
         const value = '';
-        const object = {};
+        const object = false;
         const array = [];
         this.setState({value,object,array})
     }
@@ -32,41 +33,39 @@ export default class PokemonTeambuilder extends Component {
         e.preventDefault();
         if (this.state.value ==="") {
             alert("search for pokemon first")
-            console.log("search first")
         } else {
             const temp = this.state.object;
             let arr = this.state.array.slice();
             arr.push(temp);
-            this.setState({array: arr}, () => {
-                console.log(this.state.array)
-            })
+            this.setState({array: arr}, () => {})
         }
     }
 
     handleChange(e) {
         this.setState({
-            value:e.target.value
+            value:e.target.value.toLowerCase()
         });
     }
 
     handleSubmit(e) {
         e.preventDefault();
-        console.log(this.state.value);
+        e.
         axios({
             url: `https://pokeapi.co/api/v2/pokemon/${this.state.value}`,
             method: 'GET',
             responseType: 'json',
         }).then(response => {
-            console.log(response); 
-            this.setState({object:response.data})
+            this.setState({object: response.data});
             if (response.ok) {
-                // 
+                return response.json();
             } else {
                 throw new Error("something bad went wrong");
             }
-        }).catch((err) => {
+        }).then((jsonData) => {
+
+        }).catch(err => {
+            this.setState({error: err});
         })
-        // console.log(this.state.array)
     }
 
     render() {
@@ -76,14 +75,18 @@ export default class PokemonTeambuilder extends Component {
                     <h1>Pokemon Teambuilder</h1>
                 </header>
                 <main>
-                    <form onSubmit={this.handleSubmit}>
-                        <input type="text" value={this.state.value} onChange={this.handleChange} />
-                        <input type="submit" value="Submit" />
-                    </form>
-                    <button onClick={this.handleAdd}>Add</button>
-                    <Pokemon
-                        pokemon={this.state.object}
-                    ></Pokemon>
+                    <div className="form">
+                        <form onSubmit={this.handleSubmit}>
+                            <input type="text" value={this.state.value} onChange={this.handleChange} />
+                            <input type="submit" value="Submit" />
+                        </form>
+                        <button onClick={this.handleAdd}>Add</button>
+                    </div>
+                    <div className="search">
+                        <Pokemon
+                            pokemon={this.state.object}
+                        ></Pokemon>
+                    </div>
                 </main>
             </div>
         )
