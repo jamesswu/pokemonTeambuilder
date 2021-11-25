@@ -34,7 +34,7 @@ html {
 }
 .wrapper {
     max-width: 1920px;
-    width: 70%;
+    width: 85%;
     margin: 0 auto;
 }
 header {
@@ -152,9 +152,99 @@ footer p a {
 
 }
 
-@media (max-width: 770px) {
+@media (max-width: 1381px) {
+    .team {
+        padding: 0 25px;
+    }
+}
+@media (max-width: 1322px) {
+    .search {
+        margin-left: 75px;
+    }
+}
+@media (max-width: 1234px) {
+    .team {
+        padding: 0 5px;
+    }
+    .search {
+        margin-left: 25px;
+    }
+}
+@media (max-width: 1128px) {
+    .team {
+        padding: 0 0px;
+    }
+    .search {
+        margin-left: 0px;
+    }
+}
+@media (max-width: 1087px) {
+    .contentContainer {
+        flex-direction: column;
+    }
+    .teamContainer {
+        display: flex;
+    }
+}
+@media (max-width: 913px) {
+    h1 {
+        font-size: 4.8rem;
+    }
+    main {
+        height: 100vh;
+    }
+    .search {
+        flex-direction: row;
+        justify-content: center;
+    }
     .searchedPokemon {
         flex-direction: column;
     }
 }
 
+@media (max-width: 770px) {
+    button, input {
+        font-size: 2.4rem;
+        margin: 2px;
+        padding: 1px 0px;
+    }
+    
+    .teamContainer {
+        display: flex;
+        justify-content: center;
+    }
+    .team h2 {
+        font-size: 2.4rem;
+    }
+    .team p {
+        display: none;
+    }
+    .searchedPokemon {
+        flex-direction: column;
+    }
+    .search h2 {
+        font-size: 2.4rem;
+    }
+}
+
+@media (max-width: 635px) {
+    h1 {
+        font-size: 3.2rem;
+    }
+}
+@media (max-width: 467px) {
+    .form {
+        display: flex;
+        flex-direction: column;
+    }
+}
+@media (max-width: 375px) {
+    h1 {
+        font-size: 2.4rem;
+    }
+}
+@media (max-width: 411px) {
+    h1 {
+        font-size: 2.4rem;
+    }
+}
