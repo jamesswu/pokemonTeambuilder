@@ -113,25 +113,24 @@ export default class PokemonTeambuilder extends Component {
                                 <input type="text" value={this.state.value} onChange={this.handleChange} />
                                 <input type="submit" value="Submit" />
                             </form>
-                            <button onClick={this.handleAdd}>Add</button>
+                            <span><button onClick={this.handleAdd}>Add</button></span>
                         </div>
                         <div className="contentContainer">
                             <div className="team">
                                 <h2>Team</h2>
-                                {
-                                    /**
-                                     * team is rendered here
-                                     */
-                                    this.state.array.map((item,index) => {
-                                        return (
-                                            <Team
-                                                key={index}
-                                                name={item.name}
-                                                sprite={item.sprites.versions['generation-viii'].icons.front_default}
-                                            ></Team>
-                                        )
-                                    })
-                                }
+                                <div className="teamContainer">
+                                    {
+                                        this.state.array.map((item,index) => {
+                                            return (
+                                                <Team
+                                                    key={index}
+                                                    name={item.name}
+                                                    sprite={item.sprites.versions['generation-viii'].icons.front_default}
+                                                ></Team>
+                                            )
+                                        })
+                                    }
+                                </div>
                             </div>
                             <div className="search">
                                 <Pokemon pokemon={this.state.object}></Pokemon>
