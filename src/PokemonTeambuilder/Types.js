@@ -7,7 +7,6 @@ export default class Types extends Component {
     }
     render() {
         const {type} = this.props;
-        console.log(this.props);
         if (type) {
             return (
                 <div className="type">
