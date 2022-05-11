@@ -1,12 +1,16 @@
+import './App.css';
+import Header from './components/Header'
+import PokemonTeambuilder from './components/PokemonTeamBuilder/PokemonTeambuilder';
 
-import PokemonTeambuilder from './PokemonTeambuilder/PokemonTeambuilder';
-
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <PokemonTeambuilder></PokemonTeambuilder>
+    <div className='App'>
+      <Header></Header>
+      <section className='content wrapper'>
+        <PokemonTeambuilder></PokemonTeambuilder>
+      </section>
     </div>
   );
 }
 
-export default App;
+
