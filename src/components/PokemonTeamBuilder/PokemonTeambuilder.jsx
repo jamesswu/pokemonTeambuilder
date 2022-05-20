@@ -95,7 +95,7 @@ export default function PokemonTeambuilder() {
             </form>
           </div>
           <div className='main'>
-            hello world
+            hello world foobar
             {
               array.map((obj, idx) => {
                 return (
